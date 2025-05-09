@@ -345,7 +345,7 @@
 .touch-hint {
   text-align: center;
   font-size: var(--font-mm);
-  margin-top: 7.5vh;
+  margin-top: 6.5vh;
   margin-bottom: -4.5vh;
   animation: blink 1.5s infinite ease-in-out;
   color: white;
