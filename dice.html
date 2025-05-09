@@ -70,10 +70,16 @@
         </div>
     </div>
 
-
-    <footer class="footer">
-        <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
-    </footer>
+    <!-- 📌 커스텀 모달 -->
+    <div id="customModal" class="modal hidden">
+        <div class="modal__content">
+        <p class="modal__message" id="modalMessage">메시지</p>
+        <div class="modal__buttons">
+            <button id="modalCancel">취소</button>
+            <button id="modalConfirm">확인</button>
+        </div>
+        </div>
+    </div>
     
     <!-- 환경설정 -->
     <button id="settings-toggle" class="settings-fixed-btn">
@@ -87,7 +93,7 @@
         <button id="sound-toggle" class="settings-btn">
             <img id="sound-icon" src="./images/sound-on.png" alt="sound-on">
         </button>
-        <button id="reset-character-btn" class="settings-btn">
+        <button id="resetCharacterInModal" class="settings-btn">
             <img src="./images/reset_2.png" alt="reset">
         </button>
         <button id="playbook-btn" class="settings-btn">
@@ -95,6 +101,15 @@
         </button>
         </div>
     </div>
+
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
+    </footer>
+    
+    
+<script src="js/main.js"></script>
+<script src="js/module.js"></script>
     
     
     
@@ -278,8 +293,7 @@
 
     </script>
 
-    
-<script src="js/module.js"></script>
+
 
 <script>
     const toggle = document.getElementById('diceColorToggle');
@@ -329,7 +343,7 @@
         }
         });
     </script>
-    
+        
 
 </body>
 </html>

@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
 
-
     }
 
   } else {
@@ -101,27 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       cardContainer.style.display = 'none';
     }
   }
-
-  // 모달 함수 추가
-function showModal(message, onConfirm, onCancel) {
-  const modal = document.getElementById('customModal');
-  const messageElem = document.getElementById('modalMessage');
-  const confirmBtn = document.getElementById('modalConfirm');
-  const cancelBtn = document.getElementById('modalCancel');
-
-  messageElem.innerHTML = message;
-  modal.classList.remove('hidden');
-
-  confirmBtn.onclick = () => {
-    modal.classList.add('hidden');
-    onConfirm?.();
-  };
-
-  cancelBtn.onclick = () => {
-    modal.classList.add('hidden');
-    onCancel?.();
-  };
-}
+  
 if (resetButton) {
   resetButton.addEventListener('click', function () {
     showModal('캐릭터 정보가 영구히 초기화됩니다.<br>정말 다시 만드시겠습니까?', () => {

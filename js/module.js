@@ -1,4 +1,27 @@
+// 모달 함수 추가
+  window.showModal = function (message, onConfirm, onCancel) {
+    const modal = document.getElementById('customModal');
+    const messageElem = document.getElementById('modalMessage');
+    const confirmBtn = document.getElementById('modalConfirm');
+    const cancelBtn = document.getElementById('modalCancel');
+  
+    messageElem.innerHTML = message;
+    modal.classList.remove('hidden');
+  
+    confirmBtn.onclick = () => {
+      modal.classList.add('hidden');
+      onConfirm?.();
+    };
+  
+    cancelBtn.onclick = () => {
+      modal.classList.add('hidden');
+      onCancel?.();
+    };
+  };
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    
     const toggleBtn = document.getElementById('settings-toggle');
     const modal = document.getElementById('settings-modal');
 
@@ -14,29 +37,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     soundBtn.addEventListener('click', () => {
         isMuted = !isMuted;
-        // 아이콘 변경
         soundIcon.src = isMuted ? './images/sound-off.png' : './images/sound-on.png';
-        // 효과음 음소거 처리 (예: 전체 오디오 태그에 반영)
         const audios = document.querySelectorAll('audio');
         audios.forEach(audio => {
             audio.muted = isMuted;
         });
     });
-    
-    // 캐릭터 초기화 버튼
-    const resetBtn = document.getElementById('reset-character-btn');
-    resetBtn.addEventListener('click', () => {
-        // 기존 초기화 기능 호출
-        if (typeof resetCharacter === 'function') {
-            resetCharacter();
-        } else {
-            alert('초기화 함수가 연결되지 않았어요.');
-        }
-    });
+
+    // 캐릭터 초기화 버튼 (모달 내)
+    const modalResetBtn = document.getElementById('resetCharacterInModal');
+    if (modalResetBtn) {
+        modalResetBtn.addEventListener('click', () => {
+            showModal('진행중인 캐릭터 정보를 영구히 초기화하시겠습니까?', () => {
+                localStorage.removeItem('characterName');
+                localStorage.removeItem('characterRole');
+                localStorage.removeItem('characterImg');
+                localStorage.removeItem('characterCreatedAt');
+                window.location.href = 'character.html';
+            });
+        });
+    }
 
     // 플레이북 버튼
     const playbookBtn = document.getElementById('playbook-btn');
-    playbookBtn.addEventListener('click', () => {
-        window.open('./images/playbook_1.png', '_blank');
-    });
+    if (playbookBtn) {
+        playbookBtn.addEventListener('click', () => {
+            window.open('./images/playbook_1.png', '_blank');
+        });
+    }
 });
