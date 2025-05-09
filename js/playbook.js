@@ -64,7 +64,8 @@ function simpleLightbox(imageUrl, bgColor, maxWidth){
                 }
                 img {
                 max-width: ${maxWidth};
-                width: 100vw;
+                min-width:100vw;
+                width: 100%;
                 height: auto;
                 object-fit:contain;
                 }

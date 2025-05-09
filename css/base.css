@@ -49,7 +49,6 @@ input {
 }
 
 body {
-    height: 97vh !important;
     position: relative;
     bottom: 0;
     font-family: 'Hakgyoansim Allimjang';

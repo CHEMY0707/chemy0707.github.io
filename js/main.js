@@ -144,6 +144,7 @@ const subTitle = document.querySelector('.sub__title');
 const subTitle2 = document.querySelector('.heading__title2');
 const subTitle3 = document.querySelector('.heading__title3');
 const titleSec = document.querySelector('.title_sec');
+const settingBtn = document.querySelector('.settings-fixed-btn');
 
 if (savedCharacter) {
   // 캐릭터가 있을 때
@@ -151,6 +152,7 @@ if (savedCharacter) {
   gameLogo.style.display = 'none';
   dustVideo.style.display = 'none';
   bgImage.style.display = 'none';
+  settingBtn.style.display = 'block';
 
   // 추가 요소 숨기기
   if (playbookMenu) playbookMenu.style.display = 'none';
@@ -167,6 +169,7 @@ if (savedCharacter) {
   gameLogo.style.display = 'block';
   dustVideo.style.display = 'block';
   bgImage.style.display = 'block';
+  settingBtn.style.display = 'none';
 
   // 추가 요소 보이기
   if (playbookMenu) playbookMenu.style.display = 'block';
