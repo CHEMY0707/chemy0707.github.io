@@ -59,7 +59,7 @@ input::placeholder {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 80%;
+  width: 70%;
   aspect-ratio: 3.25 / 5;
   transform: translateX(-50%);
   transform-origin: center center;
