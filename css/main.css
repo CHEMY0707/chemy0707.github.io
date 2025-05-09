@@ -282,12 +282,14 @@
   top: 80px;
   left: 250px;
 }
-
+.page-playbook .container{
+  padding-top: 4vh;
+}
 /* 플레이북 페이지 */
 .page-playbook header{
-  height: 150px;
+  height: 19vh;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.2rem;
 }
 .page-playbook header > .heading__title{
   font-size: var(--font-mm);
@@ -309,7 +311,7 @@
 
 .nav-btn {
   position: absolute;
-  bottom: -40px;
+  bottom: -32px;
   font-size: var(--font-base);
   padding: 7px 5px;
   color: white;
@@ -353,52 +355,4 @@
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.05; }
-}
-
-.zoom-modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.8);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.zoom-modal.zoom-enabled {
-  overflow: auto;
-  touch-action: auto;
-  -ms-touch-action: auto; /* IE 지원 */
-  overscroll-behavior: contain;
-}
-
-.zoom-modal img {
-  width: 90%;
-  object-fit: contain;
-}
-
-.zoom-modal .close-zoom {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0,0,0,0.4);
-  color: white;
-  border: none;
-  font-size: var(--font-sm);
-  z-index: 1001;
-  padding: 10px 21px;
-  border-radius: 50px;
-  font-family: 'Hakgyoansim Allimjang';
-}
-
-
-.zoom-modal.hidden {
-  display: none;
-}
-#zoomedImage {
-  max-width: 800px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  touch-action: manipulation;
 }

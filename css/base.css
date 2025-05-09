@@ -18,8 +18,8 @@ html, body {
     --font-base: clamp(1rem, 1.5vw, 1.25rem);
     --font-slg: clamp(1.8rem, 12vw, 2.8rem);
     --font-lg: clamp(1.8rem, 8vw, 2.5rem);
-    --font-ml: clamp(1.6rem, 6vw, 2.4rem);
-    --font-mm: clamp(1.4rem, 5vw, 2.2rem);
+    --font-ml: clamp(1.3rem, 6vw, 2.4rem);
+    --font-mm: clamp(1.2rem, 5vw, 2.2rem);
     --font-md: clamp(1.1rem, 4vw, 2.1rem);
     --font-sm: clamp(0.875rem, 1vw, 1rem);
 }
