@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>상점 - NPC카페 보드게임 도우미</title>
+
+    <!-- 기본 CSS 연결 -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/shop.css">
+
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang.css" type="text/css"/>
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="header">
+        <h1 class="heading__title">상점</h1>
+        </header>
+        <div class="back-button">
+            <a href="index.html" class="back-button__link">
+            </a>
+        </div>
+
+        <main class="main">
+        <section class="shop">
+            <h2 class="shop__title">아이템을 선택하세요</h2>
+
+            <div class="shop__list" id="shopList">
+            <!-- 아이템 목록이 여기에 채워질 예정 -->
+            </div>
+
+            <!-- 환경설정 -->
+    <button id="settings-toggle" class="settings-fixed-btn">
+        <img src="./images/setting.png" alt="setting">
+    </button>
+    
+    <!-- 모달창 -->
+    <div id="settings-modal" class="settings-modal hidden">
+        <div class="settings-overlay"></div>
+        <div class="settings-content">
+        <button class="settings-btn">
+            <img src="./images/sound-on.png" alt="sound-on">
+        </button>
+        <button class="settings-btn">
+            <img src="./images/reset_2.png" alt="reset">
+        </button>
+        <button class="settings-btn">
+            <img src="./images/info_2.png" alt="info">
+        </button>
+        </div>
+    </div>
+
+        </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
+        </footer>
+
+
+    </div>
+
+    <!-- scripts -->
+    <script src="js/shop.js" defer></script>
+    <script src="js/module.js"></script>
+
+</body>
+</html>

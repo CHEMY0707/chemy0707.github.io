@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+
+  <title>NPC카페 보드게임 도우미</title>
+
+  <!-- 기본 CSS 연결 -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/module.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang.css" type="text/css"/>
+</head>
+
+<body class="page-playbook">
+
+      
+  <header>
+    <h1 class="heading__title">TRPG보드게임</h1>
+    <h3 class="sub__title">잊혀진 던전 : 풀려나는 진실</h3>
+  </header>
+
+
+<div class="container">
+
+  <main class="main">
+    <div class="playbook-container">
+      <img id="playbookImage" src="./images/playbook_1.jpg" alt="Playbook Page1" class="playbook-img" />
+    
+      <button id="prevPageBtn" class="nav-btn nav-left hidden">〈 이전페이지</button>
+      <button id="nextPageBtn" class="nav-btn nav-right">다음페이지 〉</button>
+    </div>    
+  
+    <p class="touch-hint">플레이북을 터치하세요!</p>
+  
+    <!-- 확대 모달 -->
+    <div id="zoomModal" class="zoom-modal hidden">
+      <div class="zoom-overlay"></div>
+      <img id="zoomedImage" src="" alt="확대된 플레이북" />
+      <button id="closeZoom" class="close-zoom">닫기 ✕</button>
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
+  </footer>
+</div>
+
+<!-- 📌 커스텀 모달 -->
+<div id="customModal" class="modal hidden">
+  <div class="modal__content">
+    <p class="modal__message" id="modalMessage">메시지</p>
+    <div class="modal__buttons">
+      <button id="modalCancel">취소</button>
+      <button id="modalConfirm">확인</button>
+    </div>
+  </div>
+</div><!-- 환경설정 -->
+<button id="settings-toggle" class="settings-fixed-btn">
+    <img src="./images/setting.png" alt="setting">
+</button>
+
+<!-- 모달창 -->
+<div id="settings-modal" class="settings-modal hidden">
+    <div class="settings-overlay"></div>
+    <div class="settings-content">
+    <button class="settings-btn">
+        <img src="./images/sound-on.png" alt="sound-on">
+    </button>
+    <button class="settings-btn" class="reset-character-button">
+        <img src="./images/reset_2.png" alt="reset">
+    </button>
+    <button class="settings-btn">
+        <img src="./images/info_2.png" alt="info">
+    </button>
+    </div>
+</div>
+<div class="back-button" id="homeButton">
+    <a href="index.html" class="back-button__link" class="home-button">
+    </a>
+</div>
+
+<script>
+  const button = document.querySelector('.menu__item');
+  const clickSound = document.getElementById('click-sound');
+
+  button.addEventListener('touchstart', () => {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+
+    button.style.transform = "scale(0.95)";
+    setTimeout(() => {
+      button.style.transform = "scale(1)";
+    }, 100);
+  });
+
+  button.addEventListener('mousedown', () => {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+    button.style.transform = "scale(0.95)";
+    setTimeout(() => {
+      button.style.transform = "scale(1)";
+    }, 100);
+  });
+</script>
+
+<script src="./js/playbook.js"></script>
+<script src="./js/module.js"></script>
+
+
+
+</body>
+</html>

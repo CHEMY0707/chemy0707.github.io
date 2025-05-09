@@ -1,0 +1,56 @@
+/* 상점 전체 레이아웃 */
+.shop {
+    padding: 20px;
+    text-align: center;
+}
+
+/* 상단 제목 */
+.shop__title {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* 아이템 리스트 그리드 */
+.shop__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 👈 2열 고정 */
+    gap: 10px;
+    padding: 10px;
+  }
+  
+
+/* 개별 아이템 카드 */
+.shop-item {
+    aspect-ratio: 1 / 1; /* ✅ 정사각형 비율 고정 */
+    width: 100%; /* grid에서 열 너비에 맞춤 */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 카드 호버 효과 */
+.shop-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* 아이템 이미지 */
+.shop-item__image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* 아이템 이름 */
+.shop-item__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}

@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    word-break: keep-all;
+}
+html {
+    font-size: 16px;
+    overscroll-behavior: none;
+}
+html, body {
+    touch-action: none; /* 기본 확대 제한 */
+    overflow: hidden;
+}
+:root {
+    --font-base: clamp(1rem, 1.5vw, 1.25rem);
+    --font-slg: clamp(1.8rem, 12vw, 2.8rem);
+    --font-lg: clamp(1.8rem, 8vw, 2.5rem);
+    --font-ml: clamp(1.6rem, 6vw, 2.4rem);
+    --font-mm: clamp(1.4rem, 5vw, 2.2rem);
+    --font-md: clamp(1.1rem, 4vw, 2.1rem);
+    --font-sm: clamp(0.875rem, 1vw, 1rem);
+}
+
+button {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    appearance: none; /* 모바일 Safari, iOS 대응 */
+    -webkit-appearance: none; /* iOS 추가 대응 */
+    -moz-appearance: none;
+    cursor: pointer;
+}
+input {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+body {
+    position: relative;
+    font-family: 'Hakgyoansim Allimjang';
+    margin: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url(../images/main_bg.png);
+    background-size: cover;
+    background-position: 30% center;
+    background-repeat: no-repeat;
+    filter: blur(1px);
+    z-index: -2;
+    transform: scale(1.25);
+}
+header{
+    position: absolute;
+    top: 0; left: 0;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0,0,0,0.7));
+    z-index: -1;
+    pointer-events: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+html, body {
+    height: 100%;       /* 또는 height: 100vh; */
+    overflow: hidden;   /* 스크롤 방지 (필요한 경우만) */
+}
+.container {
+    height: 100%;        /* 전체 높이를 화면과 동일하게 */
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: center;
+}
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.footer__text{
+    font-size: 11px;
+    font-weight: 300;
+}
+h1{
+    font-size: var(--font-lg);
+}

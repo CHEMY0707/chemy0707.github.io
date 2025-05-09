@@ -1,0 +1,261 @@
+@font-face {
+  font-family: 'Hakgyoansim Allimjang';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-R.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-R.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-R.otf') format('opentype'),
+        url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-R.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Hakgyoansim Allimjang';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-B.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-B.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-B.otf') format('opentype'),
+        url('https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang-B.ttf') format('truetype');
+}
+
+.menu__item, .character-form__button {
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-weight: 400;
+  background-color: transparent;
+  border-radius: 70px;
+  background: #AE1C1C4D;
+  transition: transform 0.12s cubic-bezier(0.33, 1, 0.68, 1);
+  z-index: 0;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: 'Hakgyoansim Allimjang';
+}
+.menu__item{
+  width: 240px;
+  padding: 14px;
+  letter-spacing: 0.7px;
+  font-size: var(--font-md);
+}
+.character-form__button{
+  width: 15rem;
+  padding: 12px;
+  font-size: var(--font-md);
+  letter-spacing: 0.3px;
+}
+.menu__item::before, .character-form__button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px; /* 테두리 두께 */
+  border-radius: 70px;
+  background: linear-gradient(
+    90deg,
+    #FFEA00 0%,
+    #E88700 31.73%,
+    #FFFFFF 42.31%,
+    #FFE520 68.75%,
+    #FFB820 96.63%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.menu__item:active{
+  transform: scale(0.95); /* JS 비활성 환경 대응용 */
+}
+.btn-primary{
+  font-family: 'HakgyoansimAllimjangTTF-B';
+}
+
+
+/* 뒤로가기 버튼 스타일 */
+.back-button {
+  position: fixed;
+  top: 25px;
+  left: 20px;
+}
+
+.back-button__link {
+  width: 40px; height: 41.59px;
+  display: block;
+  padding: 10px 20px;
+  background:url(../images/home.png) no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  font-size: 16px;
+  transition: transform 0.12s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.back-button__link:active {
+  transform: scale(0.95);
+}
+/* 캐릭터 초기화 버튼 스타일 */
+.reset-character-button {
+  margin-top: 7px;
+  color: #c0c0c0;
+  border: none;
+  font-size: var(--font-sm);
+  cursor: pointer;
+  transition: transform 0.12s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.reset-character-button:active {
+  transform: scale(0.95);
+}
+
+/* 모달 배경 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* 모달 숨김 처리 */
+.hidden {
+  display: none;
+}
+
+/* 모달 콘텐츠 박스 */
+.modal__content {
+  background: #ffffff;
+  padding: 35px 24px 24px;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* 메시지 텍스트 */
+.modal__message {
+  font-size: var(--font-md);
+  color: #333;
+  font-family: 'Hakgyoansim Allimjang', sans-serif;
+  margin-bottom: 20px;
+}
+#diceResultModal .modal__message {
+  font-size: var(--font-slg);
+  color: #333;
+  font-family: 'Hakgyoansim Allimjang', sans-serif;
+  margin-bottom: 8px;
+}
+#historyContent.modal__message {
+  font-size: var(--font-md);
+  color: #333;
+  font-family: 'Pretendard', sans-serif;
+  margin-bottom: 8px;
+  letter-spacing: -0.05rem;
+}
+/* 버튼 영역 */
+.modal__buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+}
+
+.modal__buttons button {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: var(--font-md);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-family: 'Hakgyoansim Allimjang', sans-serif;
+}
+
+#modalCancel {
+  background-color: #333;
+  color: white;
+  border: 1px solid #333;
+}
+
+#modalConfirm {
+  color: #000000;
+  border: 1px solid #333;
+}
+#modalConfirm:active,#modalCancel:active {
+  transform: scale(0.95);
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* 화면 고정 설정 버튼 */
+.settings-fixed-btn {
+  position: fixed;
+  top: 25px;
+  right: 20px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.settings-fixed-btn img {
+  width: 40px; /* 필요에 따라 크기 조정 */
+}
+
+/* 모달창 */
+.settings-modal.hidden {
+  display: none;
+}
+
+.settings-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+/* 오버레이 */
+.settings-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* 버튼 컨테이너 중앙 정렬 */
+.settings-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 20px;
+}
+
+/* 버튼 이미지 */
+.settings-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.settings-btn img {
+  width: 64px; /* 또는 이미지 고유 크기 */
+  height: auto;
+}
+
+.settings-btn:active {
+  transform: scale(0.95);
+}

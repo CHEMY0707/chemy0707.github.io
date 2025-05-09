@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>캐릭터 생성 - NPC카페 보드게임 도우미</title>
+
+    <!-- 기본 CSS 연결 -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/module.css">
+    <link rel="stylesheet" href="css/character.css">
+</head>
+
+<body>
+
+    <div class="container">
+        
+
+        <main class="main">
+        <section class="character-creation">
+            <h2 class="character-creation__title">내 캐릭터 만들기</h2>
+
+            <form class="character-form" id="characterForm">
+            <!-- <label for="characterName" class="character-form__label">닉네임</label> -->
+            <input type="text" id="characterName" class="character-form__input" placeholder="닉네임을 입력하세요" required>
+
+            <button type="submit" class="character-form__button">저장하기</button>
+            </form>
+
+            <div class="character-preview" id="characterPreview">
+            <!-- 저장된 캐릭터 정보가 여기 표시됨 -->
+            </div>
+            
+            <div class="back-button">
+                <a href="index.html" class="back-button__link">메인화면으로 돌아가기</a>
+            </div>
+        </section>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
+          </footer>
+    </div>
+
+    <!-- scripts -->
+    <script src="js/character.js" defer></script>
+
+</body>
+</html>

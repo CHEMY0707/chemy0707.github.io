@@ -1,0 +1,400 @@
+/* 메인 메뉴 타이틀 */
+.menu__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 메뉴 리스트 */
+.menu__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    bottom: 70px;
+    transform: translateX(-50%);
+}
+.hp-sec{
+  width: 100%;
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.hpContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.hp-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hp-button img {
+  width: 20px;
+  background-size: cover;
+}
+
+#additionalMenus{
+  margin-top: 20px;
+}
+#additionalMenus a:last-child{
+  margin-top: 18px;
+}
+
+.main_background{
+  height: 100%; width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.main_background img{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+
+}
+
+.intro-logo {
+  position: absolute;
+  top: -38px;
+  left: -8px;
+  z-index: 5;
+}
+
+.intro-logo img {
+  height: 180px;
+  animation: fadeIn 1.5s ease-in;
+}
+
+.dust-background {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: screen; /* 또는 overlay, lighten 등 */
+}
+@keyframes zoomLoop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.main_background img:first-child {
+  object-position: top center;
+  animation: zoomLoop 10s ease-in-out infinite;
+  height: 100%;
+  z-index: -1;
+}
+
+.main_background img:nth-child(2){
+  object-position: center center;
+  z-index: 2;
+  height: 100%;
+  display: block;
+}
+
+#characterCardContainer{
+  width: 100%;
+  position: relative;
+  top: 9.8%;
+  left: 0;
+}
+.license-card {
+  width: 100%;
+  aspect-ratio: 3 / 4.35;
+  background: url('../images/license_bg.jpg') no-repeat center center;
+  background-size: contain;
+  padding: 10px;
+  box-shadow: 0 7px 20px 1px rgba(0, 0, 0, 0.3);
+  font-family: 'Hakgyoansim Allimjang', sans-serif;
+  z-index: 0;
+  position: absolute;
+}
+
+.license-card .card-photo {
+  width: 100%;
+  aspect-ratio: 3 / 3.6;
+  z-index: 2;
+}
+.card-photo-wrapper {
+  width: 42%;
+  position: absolute;
+  top: 12%;
+  left: 12%;
+}
+
+/* 뒤 회전된 프레임 */
+.photo-frame-rotated {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #cc8748;
+  transform: rotate(-4deg);
+  z-index: 0;
+  background-color: #fffbf4;
+  box-shadow: 0 3px 16px 1px #cc88485b;
+}
+
+/* 프로필 이미지 컨테이너 */
+.card-photo {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  z-index: 1;
+}
+
+/* 프로필 이미지 */
+.card-photo img {
+  width: 100%;
+  transform: scale(4);
+  transform-origin: 41% 16%;
+  z-index: 1;
+  position: relative;
+}
+
+/* 앞쪽 선만 그리는 테두리 */
+.photo-frame-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #cc8748;;
+  pointer-events: none;
+  z-index: 2;
+}
+.card-info {
+  width: 33%;
+  aspect-ratio: 3 / 2.7;
+  background: url('../images/license_info_sec.png') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 20%;
+  left: 57.4%;
+  z-index: 3;
+}
+
+.card-info .card-text {
+  width: 100%;
+  color: #a14d23;
+  text-align: left;
+  font-weight: 500;
+  font-family: 'Hakgyoansim Allimjang';
+  margin-bottom: 2.3rem;
+  margin-top: -6px;
+  padding-left: 3.5rem;
+  padding-bottom: 4px;
+  font-size: var(--font-md);
+}
+
+.card-info .card-text:last-child{
+  margin-bottom: 0;
+  letter-spacing: -0.06em;
+  font-size: var(--font-sm);
+}
+
+
+.card-stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 55px;
+}
+
+.card-stats div {
+  text-align: center;
+}
+
+.card-stats img {
+  height: 32px;
+  margin-bottom: 7px;
+}
+
+.stats-sec {
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.card-stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #a14d23;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.card-note {
+  width: 100%;
+  font-family: 'Hakgyoansim Allimjang';
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #a14d23;
+  padding:10px 40px;
+}
+
+.hp-frame {
+  display: block;
+  width: 100%;
+  padding: 0 50px;
+}
+
+.hp-frame.top {
+  margin-bottom: 15px;
+}
+
+.hp-frame.bottom {
+  margin-top: 15px;
+  transform: rotate(180deg);
+}
+
+#characterInfo{
+  z-index: 3;
+  top: 80px;
+  left: 250px;
+}
+
+/* 플레이북 페이지 */
+.page-playbook header{
+  height: 150px;
+  flex-direction: column;
+  gap: 5px;
+}
+.page-playbook header > .heading__title{
+  font-size: var(--font-mm);
+}
+.page-playbook header > .sub__title{
+  font-size: var(--font-ml);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.playbook-container {
+  position: relative;
+  text-align: center;
+}
+
+.playbook-img {
+  width: 90%;
+}
+
+.nav-btn {
+  position: absolute;
+  bottom: -40px;
+  font-size: var(--font-base);
+  padding: 7px 5px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  z-index: 10;
+  opacity: 0.85;
+  transition: all 0.1s ease;
+  font-family: 'Hakgyoansim Allimjang';
+  text-shadow:
+  0px 4px 5.5px rgba(0, 0, 0, 0.4);
+}
+.nav-btn:active{
+  transform: scale(0.95);
+}
+
+/* 왼쪽 버튼 위치 */
+.nav-left {
+  left: 5%;
+}
+
+/* 오른쪽 버튼 위치 */
+.nav-right {
+  right: 5%;
+}
+
+.hidden {
+  display: none;
+}
+
+.touch-hint {
+  text-align: center;
+  font-size: var(--font-mm);
+  margin-top: 7.5vh;
+  margin-bottom: -4.5vh;
+  animation: blink 1.5s infinite ease-in-out;
+  color: white;
+  text-shadow: 1px 1px 6px #fff;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.05; }
+}
+
+.zoom-modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zoom-modal.zoom-enabled {
+  overflow: auto;
+  touch-action: auto;
+  -ms-touch-action: auto; /* IE 지원 */
+  overscroll-behavior: contain;
+}
+
+.zoom-modal img {
+  width: 90%;
+  object-fit: contain;
+}
+
+.zoom-modal .close-zoom {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  font-size: var(--font-sm);
+  z-index: 1001;
+  padding: 10px 21px;
+  border-radius: 50px;
+  font-family: 'Hakgyoansim Allimjang';
+}
+
+
+.zoom-modal.hidden {
+  display: none;
+}
+#zoomedImage {
+  max-width: 800px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  touch-action: manipulation;
+}
