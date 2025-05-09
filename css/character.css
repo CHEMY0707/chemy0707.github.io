@@ -122,16 +122,15 @@ input::placeholder {
 
 #jobDescription{
   width: 100%; height: 60px;
-  margin-top: 20px;
-  font-size: var(--font-md) !important;
+  font-size: var(--font-mm) !important;
   line-height: 1.4;
   text-align: center;
   position: absolute;
-  bottom: 22vh;
+  bottom: 23.5vh;
   display: flex;
   align-content: center;
   justify-content: center;
-  padding: 0 40px;
+  padding: 0 45px;
   color: white;
   text-shadow:
     1px 2px 5px rgba(0, 0, 0, 0.7),  /* 어두운 그림자 */

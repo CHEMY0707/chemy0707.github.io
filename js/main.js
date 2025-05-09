@@ -88,6 +88,20 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
 
+      const Cardcontainerinner = document.querySelector('.license-card');
+      const CardInfo = document.querySelector('.card-info');
+      const aspectRatio = window.innerHeight / window.innerWidth;
+
+      if (Cardcontainerinner) {
+        Cardcontainerinner.style.width = (aspectRatio >= 2) ? '100%' : '88%';
+      }
+      if (CardInfo) {
+        CardInfo.style.height = (aspectRatio >= 2) ? '17vh' : '20vh'; // 예시 비율, 필요에 따라 조정 가능
+      }
+
+      cardContainer.style.height = (aspectRatio >= 2) ? '72vh' : '74vh';
+
+
     }
 
   } else {
@@ -168,15 +182,26 @@ const increaseBtn = document.getElementById('increaseHp');
 
 function renderHp() {
   hpContainer.innerHTML = '';
+  
+  const aspectRatio = window.innerHeight / window.innerWidth;
+  let heartSize;
+
+  if (aspectRatio >= 2) {
+    heartSize = '1.6rem'; // 세로로 긴 기기 (예: 아이폰 SE, 폴더블)
+  } else {
+    heartSize = '1.4rem'; // 가로로 넓은 태블릿 등
+  }
+
   for (let i = 0; i < MAX_HP; i++) {
     const heart = document.createElement('img');
     heart.src = i < currentHp ? './images/heart_filled.png' : './images/heart_empty.png';
     heart.alt = i < currentHp ? '♥' : '♡';
-    heart.style.width = '24px';
-    heart.style.margin = '4px 1.5px 0';
+    heart.style.width = heartSize;
+    heart.style.margin = '0.4rem 0.1rem 0';
     hpContainer.appendChild(heart);
   }
 }
+
 
 if (decreaseBtn && increaseBtn) {
   decreaseBtn.addEventListener('click', () => {

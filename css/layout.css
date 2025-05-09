@@ -55,6 +55,9 @@ header {
     color: transparent;
     filter: drop-shadow(0px 4px 5.5px rgba(0, 0, 0, 0.5));
 }
+.heading__title2, .heading__title3{
+    font-size: var(--font-lg);
+}
 .sub__title{
     font-size: var(--font-md);
     font-weight: 400;

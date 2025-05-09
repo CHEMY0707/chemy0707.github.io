@@ -111,22 +111,22 @@ document.getElementById('nextSlide').addEventListener('click', () => {
 update3DSlider();
 
 function updateJobDescription() {
-  const descriptionEl = document.getElementById('jobDescription'); // 이 id 가진 div 있어야 함
+  const descriptionEl = document.getElementById('jobDescription');
   if (!descriptionEl) return;
 
   const selected = document.querySelector('.character-option.selected');
   const role = selected?.getAttribute('data-role');
 
-  if (window.innerHeight > 800 && role && jobDescriptionMap[role]) {
+  const aspectRatio = window.innerHeight / window.innerWidth;
+
+  // 세로가 긴 기기에서만 직업 설명 표시
+  if (aspectRatio > 2 && role && jobDescriptionMap[role]) {
     descriptionEl.textContent = jobDescriptionMap[role];
     descriptionEl.style.display = 'block';
   } else {
     descriptionEl.style.display = 'none';
   }
 }
-
-
-
 
 // 📌 저장 기능 연동
 const form = document.getElementById('characterForm');
@@ -153,3 +153,4 @@ form.addEventListener('submit', function (event) {
 
   window.location.href = 'index.html';
 });
+

@@ -65,4 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'playbook.html';
         });
     }
+
+    const Cardcontainer = document.getElementById('characterCardContainer');
+    if (!Cardcontainer) return;
+
+    const aspectRatio = window.innerHeight / window.innerWidth;
+
+    if (aspectRatio >= 2) {
+      // 세로가 긴 경우
+        Cardcontainer.style.height = '70vh';
+    } else {
+      // 일반 비율 이하
+        Cardcontainer.style.height = '64vh';
+    }
 });
