@@ -39,7 +39,9 @@
   padding: 0;
   cursor: pointer;
 }
-
+#characterMenu{
+  margin-bottom: 20px;
+}
 .hp-button img {
   width: 20px;
   background-size: cover;
