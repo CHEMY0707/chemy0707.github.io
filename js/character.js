@@ -117,7 +117,7 @@ function updateJobDescription() {
   const selected = document.querySelector('.character-option.selected');
   const role = selected?.getAttribute('data-role');
 
-  if (window.innerHeight > 800 && role && jobDescriptionMap[role]) {
+  if (window.innerHeight > 900 && role && jobDescriptionMap[role]) {
     descriptionEl.textContent = jobDescriptionMap[role];
     descriptionEl.style.display = 'block';
   } else {
