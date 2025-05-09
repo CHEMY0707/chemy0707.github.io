@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalPages = 2;
 
     const updatePage = () => {
-        const src = `./images/playbook_${currentPage}.jpg`;
+        const src = `./images/playbook_${currentPage}.png`;
         playbookImage.src = src;
         zoomedImage.src = src;
     
@@ -64,8 +64,8 @@ function simpleLightbox(imageUrl, bgColor, maxWidth){
                 }
                 img {
                 max-width: ${maxWidth};
-                width: auto;
-                height: 100vh;
+                width: 100vw;
+                height: auto;
                 object-fit:contain;
                 }
             </style>

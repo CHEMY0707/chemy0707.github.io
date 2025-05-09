@@ -37,6 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 플레이북 버튼
     const playbookBtn = document.getElementById('playbook-btn');
     playbookBtn.addEventListener('click', () => {
-        window.open('./images/playbook_1.jpg', '_blank');
+        window.open('./images/playbook_1.png', '_blank');
     });
 });
