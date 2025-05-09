@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
         CardInfo.style.height = (aspectRatio >= 2) ? '17vh' : '20vh'; // 예시 비율, 필요에 따라 조정 가능
       }
 
-      cardContainer.style.height = (aspectRatio >= 2) ? '72vh' : '74vh';
+      cardContainer.style.height = (aspectRatio >= 2) ? '70vh' : '74vh';
 
 
     }
