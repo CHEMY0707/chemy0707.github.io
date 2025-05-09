@@ -1,23 +1,23 @@
 // 모달 함수 추가
-  window.showModal = function (message, onConfirm, onCancel) {
+window.showModal = function (message, onConfirm, onCancel) {
     const modal = document.getElementById('customModal');
     const messageElem = document.getElementById('modalMessage');
     const confirmBtn = document.getElementById('modalConfirm');
     const cancelBtn = document.getElementById('modalCancel');
-  
+
     messageElem.innerHTML = message;
     modal.classList.remove('hidden');
-  
+
     confirmBtn.onclick = () => {
-      modal.classList.add('hidden');
-      onConfirm?.();
+        modal.classList.add('hidden');
+        onConfirm?.();
     };
-  
+
     cancelBtn.onclick = () => {
-      modal.classList.add('hidden');
-      onCancel?.();
+        modal.classList.add('hidden');
+        onCancel?.();
     };
-  };
+};
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const playbookBtn = document.getElementById('playbook-btn');
     if (playbookBtn) {
         playbookBtn.addEventListener('click', () => {
-            window.open('./images/playbook_1.png', '_blank');
+            window.location.href = 'playbook.html';
         });
     }
 });
