@@ -33,47 +33,41 @@ document.addEventListener('DOMContentLoaded', () => {
         simpleLightbox(playbookImage.src);
     });
     
-
-    closeZoom.addEventListener('click', () => {
-        zoomModal.classList.add('hidden');
-        zoomModal.classList.remove('zoom-enabled');
-    });
-
-    
-
     updatePage();
 });
 
-function simpleLightbox(imageUrl, bgColor, maxWidth){
-    if (typeof bgColor === 'undefined') bgColor = '#000';
-    if (typeof maxWidth === 'undefined') maxWidth = '1100px';
-
-    const win = window.open('', 'simpleLightbox', 'width=800,height=600');
+function simpleLightbox(imageUrl, bgColor = '#000', maxWidth = '100vw') {
+    const win = window.open('', '_blank'); // 새 창 or 새 탭
     const html = `
-        <html>
-            <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-            <style>
-                body {
-                margin: 0;
-                background: ${bgColor};
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                }
-                img {
-                max-width: ${maxWidth};
-                min-width:100vw;
-                width: 100%;
-                height: auto;
-                object-fit:contain;
-                }
-            </style>
-            </head>
-            <body onclick="window.close()">
-            <img src="${imageUrl}" alt="Playbook Zoom">
-            </body>
-        </html>`;
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+        <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: ${bgColor};
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            width: 100vw;
+            height: auto;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+        </style>
+        </head>
+        <body onclick="window.close()">
+            <img src="${imageUrl}" alt="플레이북 이미지" />
+        </body>
+    </html>
+    `;
+    win.document.open();
     win.document.write(html);
+    win.document.close();
 }
