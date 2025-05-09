@@ -70,30 +70,32 @@
         </div>
     </div>
 
-    <!-- 환경설정 -->
-    <button id="settings-toggle" class="settings-fixed-btn">
-        <img src="./images/setting.png" alt="setting">
-    </button>
 
     <footer class="footer">
         <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
     </footer>
     
-    <!-- 모달창 -->
-    <div id="settings-modal" class="settings-modal hidden">
-        <div class="settings-overlay"></div>
-        <div class="settings-content">
-        <button class="settings-btn">
-            <img src="./images/sound-on.png" alt="sound-on">
+    <!-- 환경설정 -->
+<button id="settings-toggle" class="settings-fixed-btn">
+    <img src="./images/setting.png" alt="setting">
+</button>
+
+<!-- 모달창 -->
+<div id="settings-modal" class="settings-modal hidden">
+    <div class="settings-overlay"></div>
+    <div class="settings-content">
+        <button id="sound-toggle" class="settings-btn">
+            <img id="sound-icon" src="./images/sound-on.png" alt="sound-on">
         </button>
-        <button class="settings-btn">
+        <button id="reset-character-btn" class="settings-btn">
             <img src="./images/reset_2.png" alt="reset">
         </button>
-        <button class="settings-btn">
-            <img src="./images/info_2.png" alt="info">
+        <button id="playbook-btn" class="settings-btn">
+            <img src="./images/info.png" alt="playbook">
         </button>
-        </div>
     </div>
+</div>
+    
     
     <audio id="dice_roll_sound" src="audio/dice-95077.mp3" preload="auto"></audio>
 
