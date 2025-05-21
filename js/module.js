@@ -23,12 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     const toggleBtn = document.getElementById('settings-toggle');
-    const modal = document.getElementById('settings-modal');
+    const settingModal = document.querySelector('.settings-modal');
+    const modalContent = document.querySelector('.settings-content');
 
-    // 모달 열기/닫기
     toggleBtn.addEventListener('click', () => {
-        modal.classList.toggle('hidden');
+        settingModal.classList.toggle('show');
     });
+
+    // 배경 클릭 시 닫기
+    settingModal.addEventListener('click', (e) => {
+    if (e.target === settingModal) {
+        settingModal.classList.remove('show');
+    }
+    });
+
+    // 내부 클릭 시 전파 방지
+    if (modalContent) {
+    modalContent.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    }
+
 
     // 사운드 토글
     const soundBtn = document.getElementById('sound-toggle');

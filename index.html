@@ -16,9 +16,12 @@
 </head>
 
 <body>
-  <header>
-    <h1 class="heading__title2">내 등록증</h1>
-  </header>
+
+  <div id="characterSpriteContainer" class="character-sprite hidden">
+    <img id="characterSprite" src="" alt="캐릭터 이미지" />
+  </div>
+  <div id="bgGradientEffect"></div>
+
 
 <div class="container">
 
@@ -30,17 +33,11 @@
   </div>
 
 
-    <section class="character-info">
-      <!-- ⭐ 저장된 캐릭터명 표시 영역 -->
-      <div id="characterInfo" style="display: none;">
-        <p class="character-info__text">
-          <strong>내 캐릭터 :</strong> <span id="characterNameDisplay"></span>
-        </p>
-      </div>
-      
-      <!-- 캐릭터 정보 카드 -->
-      <div id="characterCardContainer" style="display: none;"></div>
-    </section>
+    <div class="character-info">
+      <div id="characterInfoContainer" style="display:none"></div>
+
+      <div id="characterCardContainer" class="character-card-modal" style="display: none;"></div>
+    </div>
     <section class="menu">
 
       <div class="menu__list">
@@ -58,14 +55,14 @@
         </div>
 
         <!-- 상점/주사위 버튼 -->
-        <div id="additionalMenus" style="display: none;">
+        <!-- <div id="additionalMenus" style="display: none;">
           <a href="shop.html" class="menu__item" style="display: none;">
             상점 보기
           </a>
           <a href="dice.html" class="menu__item">
             주사위 굴리기
           </a>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -75,9 +72,6 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
-  </footer>
 </div>
 
 <!-- 📌 커스텀 모달 -->
@@ -91,23 +85,86 @@
   </div>
 </div>
 
+<!-- 📌 닉네임 입력/저장 모달 -->
+<div id="nicknameModal" class="modal hidden">
+  <div class="modal__content">
+    <h3 class="modal__message">닉네임 입력</h3>
+    <input type="text" id="modalNicknameInput" placeholder="이름을 입력하세요" />
+    <button class="modal__buttons" id="modalNicknameSaveBtn">저장</button>
+  </div>
+</div>
+
+<!-- 📌 프로필 선택 모달 -->
+<div id="profileSelectModal" class="modal hidden">
+  <div class="modal-content">
+    <div class="profile-grid">
+      <div class="profile-option" data-img="./images/player_profile_erica_1.png">
+        <img src="./images/player_profile_erica_1.png" alt="erica1" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_erica_2.png">
+        <img src="./images/player_profile_erica_2.png" alt="erica2" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_erica_3.png">
+        <img src="./images/player_profile_erica_3.png" alt="erica3" />
+      </div>
+
+      <div class="profile-option" data-img="./images/player_profile_serena_1.png">
+        <img src="./images/player_profile_serena_1.png" alt="serena1" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_serena_2.png">
+        <img src="./images/player_profile_serena_2.png" alt="serena2" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_serena_3.png">
+        <img src="./images/player_profile_serena_3.png" alt="serena3" />
+      </div>
+
+      <div class="profile-option" data-img="./images/player_profile_lily_1.png">
+        <img src="./images/player_profile_lily_1.png" alt="lily1" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_lily_2.png">
+        <img src="./images/player_profile_lily_2.png" alt="lily2" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_lily_3.png">
+        <img src="./images/player_profile_lily_3.png" alt="lily3" />
+      </div>
+
+      <div class="profile-option" data-img="./images/player_profile_class_1.png">
+        <img src="./images/player_profile_class_1.png" alt="class1" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_class_2.png">
+        <img src="./images/player_profile_class_2.png" alt="class2" />
+      </div>
+      <div class="profile-option" data-img="./images/player_profile_class_3.png">
+        <img src="./images/player_profile_class_3.png" alt="class3" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 📌 주사위 모달 -->
+<audio id="dice_roll_sound2" src="audio/dice-95077.mp3" preload="auto"></audio>
+<div id="diceModal" class="dice-modal modal hidden">
+  <div class="dice-modal-content modal__content" id="diceModalContent">
+    <p id="diceText" class="modal__message">주사위 굴리는 중...</p>
+    <button id="diceConfirmBtn" class="dice-confirm-btn hidden">확인</button>
+  </div>
+</div>
+
+
+
 <!-- 환경설정 -->
 <button id="settings-toggle" class="settings-fixed-btn">
   <img src="./images/setting.png" alt="setting">
 </button>
 
 <!-- 모달창 -->
-<div id="settings-modal" class="settings-modal hidden">
-  <div class="settings-overlay"></div>
+<div id="settings-modal" class="settings-modal">
   <div class="settings-content">
     <button id="sound-toggle" class="settings-btn">
       <img id="sound-icon" src="./images/sound-on.png" alt="sound-on">
     </button>
     <button id="resetCharacterInModal" class="settings-btn">
       <img src="./images/reset_2.png" alt="reset">
-    </button>
-    <button id="playbook-btn" class="settings-btn">
-      <img src="./images/info.png" alt="playbook">
     </button>
   </div>
 </div>

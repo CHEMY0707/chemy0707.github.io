@@ -130,26 +130,22 @@ function updateJobDescription() {
 
 // 📌 저장 기능 연동
 const form = document.getElementById('characterForm');
-const input = document.getElementById('characterName');
-const createdDate = new Date().toLocaleDateString();
-localStorage.setItem('characterCreatedAt', createdDate);
-
+const now = new Date();
+const yy = String(now.getFullYear()).slice(2);
+const mm = String(now.getMonth() + 1).padStart(2, '0');
+const dd = String(now.getDate()).padStart(2, '0');
+const createdDate = `${yy}.${mm}.${dd}`;  // '25.05.16' 형식
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  const nickname = input.value.trim();
   const selectedCard = document.querySelector('.character-option.selected');
   const selectedRole = selectedCard ? selectedCard.getAttribute('data-role') : null;
   const selectedImg = selectedCard ? selectedCard.querySelector('img')?.getAttribute('src') : '';
-  const createdAt = new Date().toISOString().slice(0, 10);
 
-
-  localStorage.setItem('characterName', nickname);
   localStorage.setItem('characterRole', selectedRole);
   localStorage.setItem('characterImg', selectedImg || '');
-  localStorage.setItem('characterCreatedAt', createdAt);
-
+  localStorage.setItem('characterCreatedAt', createdDate);  // 👈 여기서 사용
 
   window.location.href = 'index.html';
 });

@@ -15,46 +15,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/HakgyoansimAllimjang/HakgyoansimAllimjang.css" type="text/css"/>
 </head>
 
-<body>
+<body class="shop-page">
 
     <div class="container">
-        <header class="header">
-        <h1 class="heading__title">상점</h1>
-        </header>
-        <div class="back-button">
-            <a href="index.html" class="back-button__link">
-            </a>
-        </div>
 
         <main class="main">
+            <!-- <p class="touch-hint2">아이템을 선택하세요!</p> -->
         <section class="shop">
-            <h2 class="shop__title">아이템을 선택하세요</h2>
-
-            <div class="shop__list" id="shopList">
-            <!-- 아이템 목록이 여기에 채워질 예정 -->
+            <div class="shop-filter">
+                <button class="active" data-filter="all">전체</button>
+                <button data-filter="consumable">소모품</button>
+                <button data-filter="equipment">장비</button>
             </div>
 
-            <!-- 환경설정 -->
-            <button id="settings-toggle" class="settings-fixed-btn">
-                <img src="./images/setting.png" alt="setting">
-            </button>
-            
-            <!-- 모달창 -->
-            <div id="settings-modal" class="settings-modal hidden">
-                <div class="settings-overlay"></div>
-                <div class="settings-content">
-                <button id="sound-toggle" class="settings-btn">
-                    <img id="sound-icon" src="./images/sound-on.png" alt="sound-on">
-                </button>
-                <button id="resetCharacterInModal" class="settings-btn">
-                    <img src="./images/reset_2.png" alt="reset">
-                </button>
-                <button id="playbook-btn" class="settings-btn">
-                    <img src="./images/info.png" alt="playbook">
-                </button>
-                </div>
+            <div class="shop__wrapper">
+                <div class="shop__list" id="shopList"></div>
             </div>
-            
 
         </section>
         </main>
@@ -66,9 +42,59 @@
 
     </div>
 
+    <!-- 환경설정 -->
+    <button id="settings-toggle" class="settings-fixed-btn">
+        <img src="./images/setting.png" alt="setting">
+    </button>
+
+    <!-- 모달창 -->
+    <div id="settings-modal" class="settings-modal">
+        <div class="settings-content">
+            <button id="sound-toggle" class="settings-btn">
+            <img id="sound-icon" src="./images/sound-on.png" alt="sound-on">
+            </button>
+            <button id="resetCharacterInModal" class="settings-btn">
+            <img src="./images/reset_2.png" alt="reset">
+            </button>
+            <button id="playbook-btn" class="settings-btn">
+            <img src="./images/info.png" alt="playbook">
+            </button>
+        </div>
+    </div>
+    <div class="back-button" id="homeButton">
+        <a href="index.html" class="back-button__link home-button">
+        </a>
+    </div>
+
+    <!-- 📌 커스텀 모달 -->
+    <div id="customModal" class="modal hidden">
+    <div class="modal__content">
+        <p class="modal__message" id="modalMessage">메시지</p>
+        <div class="modal__buttons">
+        <button id="modalCancel">취소</button>
+        <button id="modalConfirm">확인</button>
+        </div>
+    </div>
+    </div>
+
+    <!-- 아이템 상세 모달 -->
+    <div id="itemModal" class="item-modal hidden">
+    <div class="item-card-wrapper">
+        <div class="item-card">
+            <img src="" alt="아이템 카드" id="itemCardImage" />
+        <div class="shine-effect"></div>
+        </div>
+        <div class="item-info">
+            <p id="itemModalDesc">효과 설명</p>
+            <p id="itemModalPrice"><img src="./images/icon_coin.svg" alt="coin"> 0</p>
+        </div>
+    </div>
+    </div>
+
     <!-- scripts -->
     <script src="js/shop.js" defer></script>
     <script src="js/module.js"></script>
+    
 
 </body>
 </html>

@@ -47,7 +47,7 @@ header {
 .heading__title{
     font-size: var(--font-slg);
 }
-.heading__title, .heading__title2, .heading__title3{
+.heading__title, .heading__title2, .heading__title3, .character-note{
     font-weight: 600;
     background: linear-gradient(to bottom, #FFE063, #E69908);
     -webkit-background-clip: text;

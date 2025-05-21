@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/module.css">
     <link rel="stylesheet" href="css/dice.css">
+    <link rel="stylesheet" href="css/main.css">
 
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
 
@@ -18,38 +19,63 @@
 
 </head>
 <body class="page-dice">
-    <!-- Dice History 모달 -->
-    <div id="historyModal" class="modal hidden">
-        <div class="modal__content">
-        <h3>Dice History</h3>
-        <div id="historyContent" class="modal__message" style="max-height: 300px; overflow-y: auto;"></div>
-        <div class="modal__buttons">
-            <button id="historyModalOk">닫기</button>
+    <div class="dice-sec">
+    <!-- 몬스터 측 -->
+    <div class="combat-side monster-side">
+        <div class="dice_container" id="dice-monster"></div>
+        <div class="npc-controls">
+            <button id="monsterAttackBtn" class="npc-btn"></button>
+            <button id="playerDefenseBtn" class="npc-btn"></button>
         </div>
-        </div>
-    </div>
+        <div class="bottom-ui monster-ui">
+            <div class="hp-bar-wrapper">
+                <div class="hp-bar-inner">
+                    <button id="decreaseHp-monster" class="hp-button"><img src="./images/minus.svg" alt="Minus" /></button>
+                    <div id="hpContainer-monster" class="hp-bar-img"></div>
+                    <button id="increaseHp-monster" class="hp-button"><img src="./images/plus.svg" alt="Plus" /></button>
+                </div>
+            </div>
 
-    
-    <div class="back-button">
-        <a href="index.html" class="back-button__link">
-        </a>
-    </div>
-
-    
-    
-    <div class="dice-container">
-        <div class="dice_game">
-            <div class="dice_container" id="div_raffle_data"></div>
-			
-			<div class="history" style="display: none;">
-				<div>Dice History</div>
-				<div id="history_list" class="border rounded bg-light"></div>
-			</div>
-            <button id="showHistoryBtn" class="btn btn-primary">Dice History</button>
-
+            <div class="profile-card-wrapper" id="monsterCardWrapper">
+                <img id="monsterProfileCard" class="character-card clickable" src="./images/default_monster.png" alt="몬스터 카드" />
+            </div>
         </div>
     </div>
 
+    <!-- 중앙 섹션 -->
+    <div class="combat-center">
+        <div class="center-line">
+        </div>
+        <button id="settings-toggle" class="settings-fixed-btn">
+            <img src="./images/setting.png" alt="setting">
+        </button>
+    </div>
+
+    <!-- 모험가 측 -->
+    <div class="combat-side adventurer-side">
+        <div class="dice_container" id="dice-adventurer"></div>
+        <div class="bottom-ui player-ui">
+            <div class="hp-bar-wrapper">
+                <!-- <img class="character-card" src="./images/adventurer_card.png" alt="모험가 카드" /> -->
+                <div class="hp-bar-inner">
+                    <button id="decreaseHp-adventurer" class="hp-button">
+                        <img src="./images/minus.svg" alt="Minus" />
+                    </button>
+                    <div id="hpContainer-adventurer" class="hp-bar-img"></div>
+                        <button id="increaseHp-adventurer" class="hp-button">
+                    <img src="./images/plus.svg" alt="Plus" />
+                    </button>
+                </div>
+            </div>
+            <div class="profile-card-wrapper">
+                <img id="adventurerProfileCard" class="character-card" src="" alt="플레이어 카드" />
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+<!-- 
     <div class="dice-toggle-wrapper">
         <div>주사위 색상 변경</div>
         <label class="toggle-switch">
@@ -58,7 +84,7 @@
                 <span class="label-text">B</span>
             </span>
         </label>
-    </div>
+    </div> -->
     
 
     <div id="diceResultModal" class="modal hidden">
@@ -71,7 +97,7 @@
     </div>
 
     <!-- 📌 커스텀 모달 -->
-    <div id="customModal" class="modal hidden">
+    <!-- <div id="customModal" class="modal hidden">
         <div class="modal__content">
         <p class="modal__message" id="modalMessage">메시지</p>
         <div class="modal__buttons">
@@ -79,222 +105,54 @@
             <button id="modalConfirm">확인</button>
         </div>
         </div>
-    </div>
-    
-    <!-- 환경설정 -->
-    <button id="settings-toggle" class="settings-fixed-btn">
-        <img src="./images/setting.png" alt="setting">
-    </button>
-    
+    </div> -->
+
+
     <!-- 모달창 -->
-    <div id="settings-modal" class="settings-modal hidden">
-        <div class="settings-overlay"></div>
+    <div id="settings-modal" class="settings-modal">
         <div class="settings-content">
-        <button id="sound-toggle" class="settings-btn">
+            <button id="sound-toggle" class="settings-btn">
             <img id="sound-icon" src="./images/sound-on.png" alt="sound-on">
-        </button>
-        <button id="resetCharacterInModal" class="settings-btn">
-            <img src="./images/reset_2.png" alt="reset">
-        </button>
-        <button id="playbook-btn" class="settings-btn">
-            <img src="./images/info.png" alt="playbook">
-        </button>
+            </button>
+            <div class="settings-btn" id="homeButton">
+                <a href="index.html" class="back-button__link home-button"></a>
+            </div>
         </div>
     </div>
 
+    <!-- 📌 커스텀 모달 -->
+    <!-- <div id="customModal" class="modal hidden">
+        <div class="modal__content">
+            <p class="modal__message" id="modalMessage">메시지</p>
+            <div class="modal__buttons">
+                <button id="modalCancel">취소</button>
+                <button id="modalConfirm">확인</button>
+            </div>
+        </div>
+    </div> -->
 
-    <footer class="footer">
-        <p class="footer__text">© 2025 NPC Cafe with Chemycast</p>
-    </footer>
-    
+    <!-- 🧟‍♂️ 몬스터 선택 모달 -->
+    <div id="monsterSelectModal" class="modal hidden">
+    <div class="modal-content monster-modal">
+        <div class="monster-grid">
+        <div class="monster-option" data-name="고블린"><img src="./images/monster_profile_goblin.png" /><p>고블린</p></div>
+        <div class="monster-option" data-name="스켈레톤"><img src="./images/monster_profile_skelleton.png" /><p>스켈레톤</p></div>
+        <div class="monster-option" data-name="스켈레톤 메이지"><img src="./images/monster_profile_skelletonmage.png" /><p>스켈레톤 메이지</p></div>
+        <div class="monster-option" data-name="마물병사"><img src="./images/monster_profile_monstersoldier.png" /><p>마물병사</p></div>
+        <div class="monster-option" data-name="돌 골렘"><img src="./images/monster_profile_stonegollem.png" /><p>돌 골렘</p></div>
+        <div class="monster-option" data-name="늑대인간"><img src="./images/monster_profile_wolf.png" /><p>늑대인간</p></div>
+        <div class="monster-option" data-name="타락한 드루이드"><img src="./images/monster_profile_druid.png" /><p>드루이드</p></div>
+        </div>
+    </div>
+    </div>
 
-<script src="js/module.js"></script>
-    
-    
     
     <audio id="dice_roll_sound" src="audio/dice-95077.mp3" preload="auto"></audio>
 
-    <script type="text/javascript">
-        // When the document is ready
-        var g_dice_count=1;
-
-        var g_audio_player=new Array();
-        var g_prev_number=[];
-		var rerall_all_f=false;
-
-        g_audio_player["dice_roll"] = document.getElementById("dice_roll_sound");
-
-
-        $(document).ready(function () {
-            make_dice(0);
-            g_prev_number[0] = 1;
-        });
 
 
 
-        function cng_cnt(a){
-            dice_cnt=a;
-            $("#div_raffle_data").html("");
-            for (i=0; i< dice_cnt ;i++ )
-            {
-            make_dice(i);
-            }
-        }
-        function reroll_all(){
-			rerall_all_f=true;
-			
-				$("#history_list").prepend("-----------<br>");
-            for (i=0; i< dice_cnt ;i++ )
-            {
-                rollDice(dice_cnt-i-1);
-            }
-				
-				$("#history_list").prepend("-----------<br>");
-			rerall_all_f=false;
-        }
-
-
-        //range button
-        $(".number-spinner button").mousedown(function () {
-            btn = $(this);
-            input = btn.closest('.number-spinner').find('.bold');
-            btn.closest('.number-spinner').find('button').prop("disabled", false);
-
-            if (btn.attr('data-dir') == 'up') {
-                if ( input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max')) ) {
-                    input.val(parseInt(input.pVal())+1);
-                }else{
-                    btn.prop("disabled", true);
-                    clearInterval(action);
-                }
-            } else {
-                if ( input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min')) ) {
-                    input.val(parseInt(input.pVal())-1);
-                }else{
-                    btn.prop("disabled", true);
-                    clearInterval(action);
-                }
-            }
-        });
-
-
-
-        function make_dice(i){
-            var sentence="<div id='dice_"+i+"' class='dice dice-one'>";
-            sentence += "<div id='dice-one-side-one' class='side one'>";
-            sentence += "<div class='dice_dot_red one-1'></div></div>";
-
-            sentence += "<div id='dice-one-side-two' class='side two'>";
-            sentence += "<div class='dice_dot two-1'></div>";
-            sentence += "<div class='dice_dot two-2'></div></div>";
-
-            sentence += "<div id='dice-one-side-three' class='side three'>";
-            sentence += "<div class='dice_dot three-1'></div>";
-            sentence += "<div class='dice_dot three-2'></div>";
-            sentence += "<div class='dice_dot three-3'></div></div>";
-
-            sentence += "<div id='dice-one-side-four' class='side four'>";
-            sentence += "<div class='dice_dot four-1'></div>";
-            sentence += "<div class='dice_dot four-2'></div>";
-            sentence += "<div class='dice_dot four-3'></div>";
-            sentence += "<div class='dice_dot four-4'></div></div>";
-
-            sentence += "<div id='dice-one-side-five' class='side five'>";
-            sentence += "<div class='dice_dot five-1'></div>";
-            sentence += "<div class='dice_dot five-2'></div>";
-            sentence += "<div class='dice_dot five-3'></div>";
-            sentence += "<div class='dice_dot five-4'></div>";
-            sentence += "<div class='dice_dot five-5'></div></div>";
-
-            sentence += "<div id='dice-one-side-six' class='side six'>";
-            sentence += "<div class='dice_dot_red six-1'></div>";
-            sentence += "<div class='dice_dot_red six-2'></div>";
-            sentence += "<div class='dice_dot_red six-3'></div>";
-            sentence += "<div class='dice_dot_red six-4'></div>";
-            sentence += "<div class='dice_dot_red six-5'></div>";
-            sentence += "<div class='dice_dot_red six-6'></div></div></div>";
-            $("#div_raffle_data").append(sentence);
-            $("#dice_"+i).bind("click",function(){
-                rollDice(i);
-            });
-        }
-
-		function rollDice(i) {
-			let today = new Date();   
-
-            const audio = document.getElementById("dice_roll_sound");
-            audio.currentTime = 0;
-            audio.play().catch(e => console.warn("음원 재생 실패:", e));
-
-			var elDiceOne = document.getElementById('dice_' + i);
-			var dice = Math.floor((Math.random() * 6) + 1);
-			while (g_prev_number[i] == dice) {
-				dice = Math.floor((Math.random() * 6) + 1);
-			}
-			g_prev_number[i] = dice;
-			// 주사위를 굴린 후 눈금을 설정
-			for (var j = 1; j <= 6; j++) {
-				elDiceOne.classList.remove('show-' + j);
-				if (dice === j) {
-					elDiceOne.classList.add('show-' + j);
-				}
-			}
-			if(rerall_all_f){$("#history_list").prepend(today.toLocaleString()+"&nbsp;&nbsp;&nbsp;"+"눈금 : " +dice + "<br>");
-			}else{
-				$("#history_list").prepend(today.toLocaleString()+"&nbsp;&nbsp;&nbsp;"+"눈금 : " +dice + "<br>");
-				$("#history_list").prepend("<br>");
-			}
-
-            setTimeout(() => {
-                const resultModal = document.getElementById("diceResultModal");
-                const resultMessage = document.getElementById("diceResultMessage");
-                const resultOk = document.getElementById("diceModalOk");
-
-                resultMessage.textContent = `${dice}`;
-                resultModal.classList.remove("hidden");
-
-                resultOk.onclick = () => {
-                    resultModal.classList.add("hidden");
-                };
-                }, 1000); // 회전 애니메이션이 끝나는 1초 후 표시
-
-			
-		}
-
-		function getCurrentDiceValue(diceElement) {
-			for (var i = 1; i <= 6; i++) {
-				if (diceElement.classList.contains('show-' + i)) {
-					return i;
-				}
-			}
-			return null;
-		}
-
-
-
-        function isInteger(x) {
-            return (typeof x === 'number') && (x % 1 === 0);
-        }
-
-        document.getElementById("showHistoryBtn").addEventListener("click", function () {
-            const rawHistory = document.getElementById("history_list").innerHTML;
-            const historyModal = document.getElementById("historyModal");
-            const historyContent = document.getElementById("historyContent");
-            const closeBtn = document.getElementById("historyModalOk");
-
-            historyContent.innerHTML = rawHistory || "아직 주사위 기록이 없습니다.";
-            historyModal.classList.remove("hidden");
-
-            closeBtn.onclick = () => {
-                historyModal.classList.add("hidden");
-            };
-        });
-
-    </script>
-
-
-
-<script>
+<!-- <script>
     const toggle = document.getElementById('diceColorToggle');
     const labelText = document.querySelector('.label-text');
     
@@ -341,8 +199,11 @@
             });
         }
         });
-    </script>
-        
+    </script> -->
 
+<script src="js/main.js"></script>
+<script src="js/module.js"></script>
+<script src="js/dice.js"></script>
 </body>
+
 </html>
