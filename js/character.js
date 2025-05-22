@@ -120,7 +120,7 @@ function updateJobDescription() {
   const aspectRatio = window.innerHeight / window.innerWidth;
 
   // 세로가 긴 기기에서만 직업 설명 표시
-  if (aspectRatio > 2 && role && jobDescriptionMap[role]) {
+  if (aspectRatio > 1.6 && role && jobDescriptionMap[role]) {
     descriptionEl.textContent = jobDescriptionMap[role];
     descriptionEl.style.display = 'block';
   } else {
