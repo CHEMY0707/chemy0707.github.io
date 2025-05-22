@@ -244,67 +244,87 @@ function renderHp(targetElement, hpValue) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) 초깃값 렌더
-  renderHp(document.getElementById('hpContainer-adventurer'), playerHp);
-  renderHp(document.getElementById('hpContainer-monster'), monsterHp);
+    const monsterImg = document.getElementById('monsterProfileCard');
+    const placeholder = document.getElementById('monsterPlaceholderText');
 
-  // 2) 플레이어 HP 버튼
-  document.getElementById('increaseHp-adventurer').addEventListener('click', () => {
-    if (playerHp < 10) {
-      playerHp++;
-      localStorage.setItem('playerHp', playerHp);
-      renderHp(document.getElementById('hpContainer-adventurer'), playerHp);
+    // 1) 초깃값 렌더
+    renderHp(document.getElementById('hpContainer-adventurer'), playerHp);
+    renderHp(document.getElementById('hpContainer-monster'), monsterHp);
+    
+    function updateMonsterCardUI() {
+        if (!localStorage.getItem('monsterHp') || monsterHp === 0) {
+            monsterImg.classList.add('placeholder');
+            monsterImg.removeAttribute('src');
+            placeholder.style.display = 'flex';
+        } else {
+            monsterImg.classList.remove('placeholder');
+            placeholder.style.display = 'block';
+        }
     }
-  });
-  document.getElementById('decreaseHp-adventurer').addEventListener('click', () => {
-    if (playerHp > 0) {
-      playerHp--;
-      localStorage.setItem('playerHp', playerHp);
-      renderHp(document.getElementById('hpContainer-adventurer'), playerHp);
-    }
-  });
 
-  // 3) 몬스터 HP 버튼
-  document.getElementById('increaseHp-monster').addEventListener('click', () => {
-    if (monsterHp < 10) {
-      monsterHp++;
-      localStorage.setItem('monsterHp', monsterHp);
-      renderHp(document.getElementById('hpContainer-monster'), monsterHp);
-    }
-  });
-  document.getElementById('decreaseHp-monster').addEventListener('click', () => {
-    if (monsterHp > 0) {
-      monsterHp--;
-      localStorage.setItem('monsterHp', monsterHp);
-      renderHp(document.getElementById('hpContainer-monster'), monsterHp);
-    }
-  });
+// 초기 렌더링
+updateMonsterCardUI();
 
-  // 4) 몬스터 선택 모달 열기
-  document.getElementById('monsterCardWrapper').addEventListener('click', () => {
-    document.getElementById('monsterSelectModal').classList.add('active');
-  });
-
-  // 5) 몬스터 선택
-  document.querySelectorAll('.monster-option').forEach(option => {
-    option.addEventListener('click', () => {
-      const name = option.dataset.name;
-      const monster = monsterStats[name];
-      if (!monster) return;
-
-      // 카드와 HP 갱신
-      document.getElementById('monsterProfileCard').src = monster.img;
-      monsterHp = monster.hp;
-      localStorage.setItem('monsterHp', monsterHp);
-      renderHp(document.getElementById('hpContainer-monster'), monsterHp);
-
-      document.getElementById('monsterSelectModal').classList.remove('active');
+    // 2) 플레이어 HP 버튼
+    document.getElementById('increaseHp-adventurer').addEventListener('click', () => {
+        if (playerHp < 10) {
+        playerHp++;
+        localStorage.setItem('playerHp', playerHp);
+        renderHp(document.getElementById('hpContainer-adventurer'), playerHp);
+        }
     });
-  });
+    document.getElementById('decreaseHp-adventurer').addEventListener('click', () => {
+        if (playerHp > 0) {
+        playerHp--;
+        localStorage.setItem('playerHp', playerHp);
+        renderHp(document.getElementById('hpContainer-adventurer'), playerHp);
+        }
+    });
 
-  // 6) 주사위, 턴 등 기존 로직 초기화
-  make_dice(0, 'dice-monster', 'monster');
-  make_dice(1, 'dice-adventurer', 'player');
-  g_prev_number[0] = 1; g_prev_number[1] = 1;
-  setTurn('monster');
+    // 3) 몬스터 HP 버튼
+    document.getElementById('increaseHp-monster').addEventListener('click', () => {
+        if (monsterHp < 10) {
+        monsterHp++;
+        localStorage.setItem('monsterHp', monsterHp);
+        renderHp(document.getElementById('hpContainer-monster'), monsterHp);
+        }
+    });
+    document.getElementById('decreaseHp-monster').addEventListener('click', () => {
+        if (monsterHp > 0) {
+        monsterHp--;
+        localStorage.setItem('monsterHp', monsterHp);
+        renderHp(document.getElementById('hpContainer-monster'), monsterHp);
+        }
+    });
+
+    // 4) 몬스터 선택 모달 열기
+    document.getElementById('monsterCardWrapper').addEventListener('click', () => {
+        document.getElementById('monsterSelectModal').classList.add('active');
+    });
+
+    // 몬스터 선택 시 업데이트
+    document.querySelectorAll('.monster-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const name = option.dataset.name;
+            const monster = monsterStats[name];
+            if (!monster) return;
+
+            monsterImg.src = monster.img;
+            monsterImg.classList.remove('placeholder');
+            placeholder.style.display = 'none';
+
+            monsterHp = monster.hp;
+            localStorage.setItem('monsterHp', monsterHp);
+            renderHp(document.getElementById('hpContainer-monster'), monsterHp);
+
+            document.getElementById('monsterSelectModal').classList.remove('active');
+        });
+    });
+
+
+    // 6) 주사위, 턴 등 기존 로직 초기화
+    make_dice(0, 'dice-monster', 'monster');
+    make_dice(1, 'dice-adventurer', 'player');
+    g_prev_number[0] = 1; g_prev_number[1] = 1;
+    setTurn('monster');
 });
